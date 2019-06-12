@@ -51,6 +51,7 @@ router.post("/login", (req, res, next) => {
       }
 
       if (seconds < 120) {
+        // * To make it one day just instead of 160 seconds make it "86400" => 24h
         return res.status(401).json("Unauthorized request");
       } else {
         console.log("Hi");
@@ -60,19 +61,6 @@ router.post("/login", (req, res, next) => {
           seconds: seconds
         });
       }
-
-      // setInterval(() => {
-      //   if (seconds < 120) {
-      //     console.log(seconds);
-      //     return res.status(401).json("Unauthorized request");
-      //   } else {
-      //     return res.status(201).json({
-      //       message: "Login Success",
-      //       Date: user.creation_dt.getMinutes(),
-      //       seconds: seconds
-      //     });
-      //   }
-      // }, 500);
     });
   })(req, res, next);
 });
